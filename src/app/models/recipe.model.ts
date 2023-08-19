@@ -1,3 +1,7 @@
+export interface RecipeList {
+  recipes: RecipeInfo[]
+}
+
 export interface RecipeInfo {
   vegetarian: boolean;
   vegan: boolean;

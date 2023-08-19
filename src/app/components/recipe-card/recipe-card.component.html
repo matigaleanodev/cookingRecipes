@@ -1,0 +1,12 @@
+<div class="card">
+    <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" >
+    <div class="card-body">
+      <h5 class="card-title fs-5 text-truncate">{{ recipe.title }}</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</li>
+        <li class="list-group-item">Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</li>
+      </ul>
+      <!-- <div class="card-text">
+      </div> -->
+    </div>
+  </div>

@@ -17,8 +17,9 @@ body {
     #d8bd97,
     #ffffff
   );
-  background-size: 100% 100%;
+  background-size: 100% 1000%;
   margin: 0;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
 }

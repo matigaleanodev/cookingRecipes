@@ -1,0 +1,9 @@
+<div class="container">
+  <section *ngIf="viewList" class="row">
+    <ng-container *ngFor="let recipe of recipeList">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+        <app-recipe-card [recipe]="recipe" />
+      </div>
+    </ng-container>
+  </section>
+</div>

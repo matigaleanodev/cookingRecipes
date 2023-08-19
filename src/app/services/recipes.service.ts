@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { RecipeInfo, RecipeList } from '../models/recipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,15 @@ export class RecipesService {
       apiKey: this.apiKey,
     };
     return this.http.get(url, { params });
+  }
+
+  randomRecipes(limit: number) {
+    const url = `${this.apiUrl}/recipes/random`;
+    const params = {
+      apiKey: this.apiKey,
+      number: limit,
+      limitLicense: true
+    };
+    return this.http.get<RecipeList>(url, { params });
   }
 }
