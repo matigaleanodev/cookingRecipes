@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: 'Sofia Sans Semi Condensed','Nunito Sans', sans-serif;
+  font-family: "Sofia Sans Semi Condensed", "Nunito Sans", sans-serif;
   background: radial-gradient(
     circle at top right,
     #ff8d8e,
@@ -20,6 +20,27 @@ body {
   background-size: 100% 1000%;
   margin: 0;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: radial-gradient(
+    circle at top right,
+    #ff8d8e,
+    #ffc26b,
+    #d8bd97,
+    #ffffff
+  );
+  background-size: 100% 1000%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary;
+  border-radius: 3px;
 }
