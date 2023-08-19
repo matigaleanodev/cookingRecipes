@@ -9,25 +9,30 @@ import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
   standalone: true,
   imports: [CommonModule, RecipeCardComponent],
   templateUrl: './home.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class HomeComponent implements OnInit{
-  
-  private _recipeSvc = inject(RecipesService)
-  protected recipeList: RecipeInfo[] = []
+export class HomeComponent implements OnInit {
+  private service = inject(RecipesService);
+  protected recipeList: RecipeInfo[] = [];
   viewList: boolean = false;
 
   ngOnInit(): void {
     this.getRecipeList();
   }
 
-  getRecipeList(){
-    this._recipeSvc.randomRecipes(20).subscribe({
-      next: (value) => {
-          this.recipeList = value.recipes
-          this.viewList = true
-      },
-    })
+  getRecipeList() {
+    const data = this.service.dataList;
+    if(data.length >= 1){
+      this.recipeList = data;
+      this.viewList = true;
+    } else {
+      this.service.randomRecipes(10).subscribe({
+        next: (value) => {
+          this.recipeList = value.recipes;
+          this.service.dataList = value.recipes;
+          this.viewList = true;
+        },
+      });
+    }
   }
 }

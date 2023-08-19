@@ -20,27 +20,23 @@ body {
   background-size: 100% 1000%;
   margin: 0;
   height: 100vh;
-  overflow: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
+.scrollable-container {
+  max-height: calc(100% - 50px);
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scrollable-container::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollable-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: radial-gradient(
-    circle at top right,
-    #ff8d8e,
-    #ffc26b,
-    #d8bd97,
-    #ffffff
-  );
-  background-size: 100% 1000%;
-}
-
-::-webkit-scrollbar-thumb {
+.scrollable-container::-webkit-scrollbar-thumb {
   background: $secondary;
   border-radius: 3px;
 }

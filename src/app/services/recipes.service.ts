@@ -8,6 +8,7 @@ import { RecipeInfo, RecipeList } from '../models/recipe.model';
 })
 export class RecipesService {
   
+  dataList: RecipeInfo[] = [];
   private apiKey: string = environment.RECIPE_API_KEY;
   private apiUrl: string = 'https://api.spoonacular.com';
 

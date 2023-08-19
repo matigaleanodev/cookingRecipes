@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card" (click)="viewRecipeDetail(recipe)">
     <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" >
     <div class="card-body">
-      <h5 class="card-title fs-5 text-truncate">{{ recipe.title }}</h5>
+      <h5 class="card-title fs-5 text-truncate pointer-event"  >{{ recipe.title }}</h5>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</li>
         <li class="list-group-item">Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</li>
