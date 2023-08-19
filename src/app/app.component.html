@@ -1,17 +1,1 @@
-<div>
-  <h2>Texto Original</h2>
-  <p>{{ originalText }}</p>
-</div>
-<div>
-  <h2>Texto Traducido</h2>
-  <p>{{ originalText | translate:targetLanguage | async }}</p>
-</div>
-<div>
-  <label for="targetLanguage">Selecciona el idioma de destino:</label>
-  <select id="targetLanguage" [(ngModel)]="targetLanguage">
-    <option value="es">Español</option>
-    <option value="fr">Francés</option>
-    <option value="de">Alemán</option>
-    <!-- Agrega más opciones de idioma según sea necesario -->
-  </select>
-</div>
+<app-header/>

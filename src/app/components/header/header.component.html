@@ -1,0 +1,46 @@
+<div class="header fixed-top container-fluid p-0">
+  <nav class="navbar navbar-expand-md navbar-default px-2 px-md-5 py-2">
+    <div class="navbar-brand col"
+      ><img
+        class="img-fluid pb-2 me-1"
+        [ngSrc]="logo"
+        alt="logo sombrero de cocina"
+        height="32"
+        width="32"
+      />
+        <span class="fs-4 fw-bold">{{title}}</span>
+      </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar"
+      aria-controls="navbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-auto" id="navbar">
+      <ul class="navbar-nav mr-auto text-center col">
+        <li class="nav-item active">
+          <a class="nav-link fw-bolder" >Uno </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder" >Dos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bolder" >Tres </a>
+        </li>
+      </ul>
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end col-auto">
+        <div class="input-group rounded">
+            <span class="input-group-text bg-white border-end-0 ">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+          <input class="form-control border-start-0">
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
