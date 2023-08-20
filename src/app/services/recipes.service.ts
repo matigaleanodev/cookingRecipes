@@ -40,4 +40,19 @@ export class RecipesService {
     };
     return this.http.get<RecipeList>(url, { params });
   }
+
+  
+  setDataStorage(data:  RecipeInfo[]) {
+    const jsonData = JSON.stringify(data);
+    sessionStorage.setItem('RecipeList', jsonData);
+  }
+
+  getDataStorage(): RecipeInfo[] {
+    const jsonData = sessionStorage.getItem('RecipeList');
+    if (jsonData) {
+      return JSON.parse(jsonData);
+    }
+    return []
+  }
+
 }

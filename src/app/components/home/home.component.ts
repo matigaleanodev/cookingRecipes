@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   getRecipeList() {
-    const data = this.service.dataList;
+    const data = this.service.getDataStorage();
     if(data.length >= 1){
       this.recipeList = data;
       this.viewList = true;
@@ -30,9 +30,11 @@ export class HomeComponent implements OnInit {
         next: (value) => {
           this.recipeList = value.recipes;
           this.service.dataList = value.recipes;
+          this.service.setDataStorage(this.recipeList);
           this.viewList = true;
         },
       });
     }
   }
+
 }
