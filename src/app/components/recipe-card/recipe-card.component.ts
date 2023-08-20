@@ -16,6 +16,6 @@ export class RecipeCardComponent {
   private router = inject(Router);
 
   viewRecipeDetail(recipe: RecipeInfo) {
-    this.router.navigate(['/recipe', recipe.id], { state: { recipe } });
+    this.router.navigate([`/recipe/${recipe.id}`]);
   }
 }

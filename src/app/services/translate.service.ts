@@ -13,7 +13,7 @@ export class TranslateService {
 
   private http = inject(HttpClient)
 
-  translate(text: string, targetLang: string): Observable<string> {
+  translate(text: string, targetLang: string): Observable<any> {
     const headers = new HttpHeaders({
       'Ocp-Apim-Subscription-Key': this.apiKey,
       'Content-Type': 'application/json',

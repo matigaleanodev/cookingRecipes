@@ -3,7 +3,7 @@ import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.
 
 export const RootRoutes: Routes = [
 	{
-    path: 'receta/:id',
+    path: 'recipe/:id',
 		component: RecipeDetailComponent
     // loadComponent: () =>
     //   import('./components/recipe-detail/recipe-detail.component').then(

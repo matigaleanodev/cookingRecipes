@@ -22,7 +22,7 @@ export class TranslatePipe implements PipeTransform {
       catchError(() => of(text)),
       finalize(() => translationSubject.complete()) 
     ).subscribe(translation => {
-      translationSubject.next(translation);
+      translationSubject.next(translation[0].translation.text);
     });
 
     return translationSubject.asObservable();

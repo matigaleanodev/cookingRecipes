@@ -1,14 +1,14 @@
-<div class="container">
-    <div class="row">
+<div class="container" >
+    <div class="row" *ngIf="viewRecipe">
       <div class="col-md-8">
         <h2>{{ recipe.title }}</h2>
         <img [src]="recipe.image" alt="{{ recipe.title }}" class="img-fluid">
-        <p>{{ recipe.summary }}</p>
+        <p [innerHTML]="recipe.summary"></p>
   
         <h3>Ingredientes</h3>
         <ul>
           <li *ngFor="let ingredient of recipe.extendedIngredients">
-            {{ ingredient.amount }} {{ ingredient.measures.metric.unitShort }} - {{ ingredient.name }}
+            {{ ingredient.amount}} {{ ingredient.measures.metric.unitShort}} - {{ ingredient.name}}
           </li>
         </ul>
   
@@ -18,16 +18,12 @@
             {{ step.step }}
           </li>
         </ol>
-  
-        <!-- Agrega más detalles de la receta según tus necesidades -->
       </div>
       <div class="col-md-4">
-        <!-- Información adicional de la receta, como tiempo de preparación, puntuación, etc. -->
         <h3>Detalles adicionales</h3>
         <ul>
           <li>Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</li>
           <li>Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</li>
-          <!-- Agrega más detalles aquí -->
         </ul>
       </div>
     </div>

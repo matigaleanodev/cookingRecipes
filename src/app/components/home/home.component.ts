@@ -24,9 +24,10 @@ export class HomeComponent implements OnInit {
     const data = this.service.getDataStorage();
     if(data.length >= 1){
       this.recipeList = data;
+      this.service.dataList = data;
       this.viewList = true;
     } else {
-      this.service.randomRecipes(10).subscribe({
+      this.service.randomRecipes(12).subscribe({
         next: (value) => {
           this.recipeList = value.recipes;
           this.service.dataList = value.recipes;
