@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,14 @@ import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
   imports: [CommonModule, RecipeCardComponent],
   templateUrl: './home.component.html',
   styles: [],
+  animations: [
+    trigger('fadeInLeft', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(50px)' }),
+        animate('1200ms', style({ opacity: 1, transform: 'translateX(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   private service = inject(RecipesService);
@@ -19,6 +28,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipeList();
   }
+
+  getAnimationDelay(index: number): string {
+    const delayMs = 300 * index; // 300ms de retraso por índice
+    return `${delayMs}ms`;
+  }
+  
 
   getRecipeList() {
     const data = this.service.getDataStorage();
