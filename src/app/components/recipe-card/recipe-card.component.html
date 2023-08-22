@@ -1,78 +1,58 @@
-<div class="card" (click)="viewRecipeDetail(recipe)" style="min-height: 610px;">
+<div class="card" (click)="viewRecipeDetail(recipe)" style="min-height: 570px;">
   <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" />
-  <div class="card-body">
+  <div class="card-body d-flex flex-column">
     <h5 class="card-title fs-5 text-truncate pointer-event mb-3">
       {{ recipe.title }}
     </h5>
-    <div class="row mb-1" *ngIf="recipe.dishTypes.length >= 1">
+    <!-- <div class="row mb-1" *ngIf="recipe.dishTypes.length >= 1">
       <span class="text-info me-2">
         Tipos de Platos <i class="fas fa-utensil-spoon"></i>:
       </span>
       <div class="ms-4">
         {{ recipe.dishTypes.join(', ') }}
       </div>
+    </div> -->
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.preparationMinutes >= 1">
+      <span >Tiempo de Preparación:</span> <span>{{ recipe.preparationMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
     </div>
-    <div class="row mb-1" *ngIf="recipe.preparationMinutes >= 1">
-      <span >Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</span>
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.cookingMinutes >= 1">
+      <span >Tiempo de Cocción: </span> <span>{{ recipe.cookingMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
     </div>
-    <div class="row mb-1" *ngIf="recipe.cookingMinutes >= 1">
-      <span >Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</span>
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.readyInMinutes >= 1">
+      <span >Listo en: </span> <span>{{ recipe.readyInMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
     </div>
-    <div class="row mb-1" *ngIf="recipe.readyInMinutes >= 1">
-      <span >Listo en: {{ recipe.readyInMinutes }} minutos</span>
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.servings">
+      <span >Porciones: </span> <span>{{ recipe.servings }}</span>
     </div>
-    <div class="row mb-1" *ngIf="recipe.servings">
-      <span >Porciones: {{ recipe.servings }}</span>
+    <div class="d-flex justify-content-between mb-1 mt-auto" *ngIf="recipe.healthScore">
+      <span >Puntuación Nutricional: </span><span>{{ recipe.healthScore }}</span>
     </div>
-    <div class="row mb-1" *ngIf="recipe.healthScore">
-      <span >Puntuación Nutricional: {{ recipe.healthScore }}</span>
-    </div>
-    <div class="row mb-1 mt-auto" *ngIf="recipe.cuisines.length >= 1">
+    <!-- <div class="row mb-1 mt-auto" *ngIf="recipe.cuisines.length >= 1">
       <span class="text-info me-2">
         Cocinas <i class="fas fa-utensils"></i>:
       </span>
       <div class="ms-4">
         {{ recipe.cuisines.join(', ') }}
       </div>
-    </div>
+    </div> -->
   </div>
-  <ul class="list-group list-group-flush" *ngIf="recipe.vegetarian || recipe.vegan || recipe.glutenFree || recipe.dairyFree || recipe.veryHealthy || recipe.cheap || recipe.veryPopular || recipe.sustainable || recipe.lowFodmap">
+  <ul class="list-group list-group-flush" *ngIf="activeProperties.length > 0">
     <li class="list-group-item">
-      <span Tooltip *ngIf="recipe.vegetarian" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Vegetariano'">
-        <i class="fas fa-leaf"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.vegan" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Vegano'">
-        <i class="fas fa-carrot"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.glutenFree" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Libre de gluten'">
-        <i class="fas fa-bread-slice"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.dairyFree" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Sin lácteos'">
-        <i class="fas fa-cheese"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.veryHealthy" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Muy saludable'">
-        <i class="fas fa-apple-alt"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.cheap" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Económico'">
-        <i class="fas fa-dollar-sign"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.veryPopular" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Muy popular'">
-        <i class="fas fa-fire"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.sustainable" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Sostenible'">
-        <i class="fas fa-leaf"></i>
-      </span>
-      <span Tooltip *ngIf="recipe.lowFodmap" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Bajo en FODMAP'">
-        <i class="fas fa-poop"></i>
+      <span *ngFor="let prop of activeProperties" [ngClass]="{ 'text-success': recipe[prop.key] }">
+        <span Tooltip *ngIf="recipe[prop.key]" class="me-2" data-bs-toggle="tooltip" [tooltip]="prop.label">
+          <i [ngClass]="prop.iconClass"></i>
+        </span>
       </span>
     </li>
   </ul>
-  <div class="card-footer">
+  <div class="card-footer d-flex flex-column" style="min-height: 100px;">
     <div class="row">
       <span class="text-secondary me-2">
         <i class="fas fa-award"></i> Créditos: {{ recipe.creditsText }}
-      </span>
-      <span class="text-primary me-2 text-end">
+      </span>      
+    </div>
+    <div class="row mt-auto mb-0">
+      <span class="text-primary text-end">
         <i class="fas fa-thumbs-up"></i> Likes: {{ recipe.aggregateLikes }}
       </span>
     </div>
