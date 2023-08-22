@@ -1,12 +1,67 @@
 <div class="card" (click)="viewRecipeDetail(recipe)">
-    <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" >
-    <div class="card-body">
-      <h5 class="card-title fs-5 text-truncate pointer-event"  >{{ recipe.title }}</h5>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</li>
-        <li class="list-group-item">Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</li>
-      </ul>
-      <!-- <div class="card-text">
-      </div> -->
+  <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" />
+  <div class="card-body">
+    <h5 class="card-title fs-5 text-truncate pointer-event">
+      {{ recipe.title }}
+    </h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos
+      </li>
+      <li class="list-group-item">
+        Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos
+      </li>      
+      <li class="list-group-item" *ngIf="recipe.cuisines.length >= 1">
+        <span class="text-info me-2">
+          <i class="fas fa-utensils"></i> Cocinas: {{ recipe.cuisines.join(', ') }}
+        </span>
+      </li>
+      <li class="list-group-item" *ngIf="recipe.dishTypes.length >= 1">
+        <span class="text-info me-2">
+          <i class="fas fa-utensil-spoon"></i> Tipos de Platos: {{ recipe.dishTypes.join(', ') }}
+        </span>
+      </li>
+      <li class="list-group-item">
+        <span Tooltip *ngIf="recipe.vegetarian" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Vegetariano'">
+          <i class="fas fa-leaf"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.vegan" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Vegano'">
+          <i class="fas fa-carrot"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.glutenFree" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Libre de gluten'">
+          <i class="fas fa-bread-slice"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.dairyFree" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Sin lácteos'">
+          <i class="fas fa-cheese"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.veryHealthy" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Muy saludable'">
+          <i class="fas fa-apple-alt"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.cheap" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Económico'">
+          <i class="fas fa-dollar-sign"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.veryPopular" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Muy popular'">
+          <i class="fas fa-fire"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.sustainable" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Sostenible'">
+          <i class="fas fa-leaf"></i>
+        </span>
+        <span Tooltip *ngIf="recipe.lowFodmap" class="text-success me-2" data-bs-toggle="tooltip" [tooltip]="'Bajo en FODMAP'">
+          <i class="fas fa-poop"></i>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <span class="text-secondary me-2">
+        <i class="fas fa-award"></i> Créditos: {{ recipe.creditsText }}
+      </span>
+    </div>
+    <div class="row">
+      <span class="text-primary me-2 text-end">
+        <i class="fas fa-thumbs-up"></i> Likes: {{ recipe.aggregateLikes }}
+      </span>
     </div>
   </div>
+</div>
