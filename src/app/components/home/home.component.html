@@ -1,12 +1,11 @@
 <div class="container">
   <section *ngIf="viewList" class="row">
-    <ng-container *ngFor="let recipe of recipeList; let i = index">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
-        [@fadeInLeft]="''"
-        [style.animation-delay]="getAnimationDelay(i)"
-      >
-        <app-recipe-card [recipe]="recipe" />
-      </div>
-    </ng-container>
+    <div
+      *ngFor="let recipe of recipeList; let i = index"
+      class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
+      [@fadeInOnEnter]="i"
+    >
+      <app-recipe-card [recipe]="recipe" />
+    </div>
   </section>
 </div>
