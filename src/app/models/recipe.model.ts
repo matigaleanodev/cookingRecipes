@@ -4,7 +4,6 @@ export interface RecipeList {
 
 export interface RecipeInfo {
   [key: string]:any;
-  isVisible: boolean;
   vegetarian: boolean;
   vegan: boolean;
   glutenFree: boolean;

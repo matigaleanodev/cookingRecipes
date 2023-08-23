@@ -8,7 +8,7 @@
         <h3>Ingredientes</h3>
         <ul>
           <li *ngFor="let ingredient of recipe.extendedIngredients">
-            {{ ingredient.amount}} {{ ingredient.measures.metric.unitShort}} - {{ ingredient.name}}
+            {{ ingredient.measures.metric.amount | fraction}} {{ ingredient.measures.metric.unitLong}} - {{ ingredient.name}}
           </li>
         </ul>
   
