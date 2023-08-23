@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { TranslatePipe } from "../../pipes/translate.pipe";
-import { FractionPipe } from "../../pipes/fraction.pipe";
+import { RecipeIngredientComponent } from '../recipe-ingredient/recipe-ingredient.component';
 
 @Component({
     selector: 'app-recipe-detail',
     standalone: true,
     templateUrl: './recipe-detail.component.html',
     styles: [],
-    imports: [CommonModule, TranslatePipe, FractionPipe]
+    imports: [CommonModule, TranslatePipe, RecipeIngredientComponent]
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() id?: string; 
@@ -27,7 +27,6 @@ export class RecipeDetailComponent implements OnInit {
     const recipe = data.find(i => i.id === Number(this.id))
     if(recipe){
       this.recipe = recipe;
-      console.log(recipe)
       this.viewRecipe = true;
     }
   }

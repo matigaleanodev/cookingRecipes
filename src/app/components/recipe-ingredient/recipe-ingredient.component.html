@@ -1,0 +1,22 @@
+<div class="recipe-ingredient" style="height: 200px; width: 100px">
+  <div class="text-center mt-2">
+    <p class="fs-6">
+      {{ ingredient.measures.metric.amount | fraction }}
+      {{ ingredient.measures.metric.unitShort }}
+    </p>
+  </div>
+
+  <div class="image-wrapped d-flex">
+    <img
+      [src]="
+        'https://spoonacular.com/cdn/ingredients_100x100/' + ingredient.image
+      "
+      alt="{{ ingredient.name }}"
+      class="img-fluid image"
+    />
+  </div>
+
+  <div class="text-center">
+    <p class="fs-6">{{ ingredient.name }}</p>
+  </div>
+</div>

@@ -96,7 +96,7 @@ interface StepIngredient {
   image: string;
 }
 
-interface StepEquipment {
+export interface StepEquipment {
   id: number;
   name: string;
   localizedName: string;
