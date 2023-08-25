@@ -1,14 +1,14 @@
 <article class="card hover-card"  style="min-height: 450px;">
   <img 
-    [ngSrc]="'https://spoonacular.com/recipeImages/'+recipe.id+'-312x231.'+recipe.imageType" 
+    [ngSrc]="'https://spoonacular.com/recipeImages/'+recipe.id+'-312x231.'+( recipe.imageType ? recipe.imageType : 'jpg')" 
     class="card-img-top pointer" 
-    alt="{{ recipe.title }}" 
+    alt="{{ recipe.title}}" 
     height="225" width="304" [priority]="index"
     (click)="viewRecipeDetail(recipe)"
     />
   <div class="card-body d-flex flex-column px-3 py-2">
     <h5 class="card-title fs-5 fw-bold text-orange pointer text-center mb-auto" (click)="viewRecipeDetail(recipe)">
-      {{ recipe.title }}
+      {{ recipe.title | translate:'es' | async  }}
     </h5>
     <div class="d-flex justify-content-between mb-1" *ngIf="recipe.readyInMinutes >= 1">
       <span >Listo en: </span> <span>{{ recipe.readyInMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
@@ -20,12 +20,12 @@
   
   <div class="card-footer d-flex flex-column" style="min-height: 100px;">
     <div class="row">
-      <span class="text-secondary me-2">
+      <span class="text-grey me-2">
         <i class="fas fa-award"></i> Créditos: {{ recipe.creditsText }}
       </span>      
     </div>
     <div class="row mt-auto mb-0">
-      <button class="text-primary col-auto ms-auto" (click)="like()">
+      <button class="text-secondary col-auto ms-auto" (click)="like()">
         <i class="fas fa-thumbs-up pointer me-1"></i> <span>{{ recipe.aggregateLikes }}</span>
       </button>
     </div>

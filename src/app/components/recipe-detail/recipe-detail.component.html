@@ -1,9 +1,19 @@
-<div class="container">
-  <div class="row mb-3" *ngIf="viewRecipe">
-    <div class="col-12">
-      <h2>{{ recipe.title }}</h2>
-      <img [src]="recipe.image" alt="{{ recipe.title }}" class="img-fluid" />
-      <p [innerHTML]="recipe.summary"></p>
+<article class="container">
+  <div class="row" *ngIf="viewRecipe">
+    <div class="col-12 mb-3 mb-md-5">
+      <h2 class="text-center text-orange mb-md-5">{{ recipe.title | translate:'es' | async }}</h2>
+      <div class="row mb-3">
+        <div class="col-12 col-lg-6 d-flex justify-content-center">
+          <img
+            [src]="'https://spoonacular.com/recipeImages/'+recipe.id+'-556x370.'+( recipe.imageType ? recipe.imageType : 'jpg')"
+            alt="{{ recipe.title }}"
+            class="img-fluid rounded rounded-3 custom-shadow"
+          />
+        </div>
+        <div class="col-12 col-lg-6 d-flex bg-light bg-gradient  bg-opacity-25 p-5 justify-content-center align-items-center rounded rounded-3 custom-shadow">
+          <p [innerHTML]="recipe.summary | translate:'es' | async" class="text-primary"></p>
+        </div>
+      </div>
 
       <!-- <div class="col-md-4">
         <h3>Detalles adicionales</h3>
@@ -13,18 +23,20 @@
         </ul>
       </div> -->
     </div>
-    <h3>Ingredientes</h3>
-    <div class="row d-flex bg-white p-5 rounded rounded-3 custom-shadow w-75 mb-3">
-      <div class="col" *ngFor="let ingredient of recipe.extendedIngredients">
+    <h3 class="mb-2 mb-md-4">Ingredientes</h3>
+    <div
+      class="row d-flex px-md-5 mb-3 justify-content-center justify-content-md-start"
+    >
+      <div class="col-auto" *ngFor="let ingredient of recipe.extendedIngredients">
         <app-recipe-ingredient [ingredient]="ingredient" />
       </div>
     </div>
 
     <h3>Pasos a Seguir</h3>
-    <ol>
-      <li *ngFor="let step of recipe.analyzedInstructions[0]?.steps">
-        {{ step.step }}
+    <ol class="list-group">
+      <li class="list-group-item" *ngFor="let step of recipe.analyzedInstructions[0]?.steps">
+        {{ step.step | translate:'es' | async}}
       </li>
     </ol>
   </div>
-</div>
+</article>

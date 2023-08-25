@@ -45,6 +45,15 @@ body {
   cursor: pointer;
 }
 
+.text-orange{
+  color: $primary;
+  text-shadow: -1px 1px 2px rgba(255, 0, 0, 0.5);
+}
+
+.text-grey{
+  color: #917d80fb;
+}
+
 .custom-shadow {
   box-shadow: -4px 4px 5px 1px rgba(115, 57, 24, 0.75);
   -webkit-box-shadow: -4px 4px 5px 1px rgba(115, 57, 24, 0.75);
@@ -52,16 +61,16 @@ body {
 }
 
 .image-wrapper {
-  width: 100px;
-  height: 95px;
+  width: 50px;
+  height: 45px;
   vertical-align: middle;
   text-align: center;
   line-height: 100px;
 }
 .image {
   display: inline-block;
-  max-width: 100px;
-  max-height: 69px;
+  max-width: 50px;
+  max-height: 38px;
   vertical-align: middle;
   margin: auto;
 }

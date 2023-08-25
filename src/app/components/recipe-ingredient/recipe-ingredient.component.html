@@ -1,8 +1,11 @@
-<div class="recipe-ingredient" style="height: 200px; width: 100px">
+<div
+  class="recipe-ingredient mb-3 bg-white rounded rounded-3 custom-shadow px-1 d-flex flex-column"
+  style="height: 150px; width: 100px"
+>
   <div class="text-center mt-2">
-    <p class="fs-6">
+    <p class="fs-6 text-primary">
       {{ ingredient.measures.metric.amount | fraction }}
-      {{ ingredient.measures.metric.unitShort }}
+      {{ ingredient.measures.metric.unitShort | translate:'es' | async}}
     </p>
   </div>
 
@@ -16,7 +19,7 @@
     />
   </div>
 
-  <div class="text-center">
-    <p class="fs-6">{{ ingredient.name }}</p>
+  <div class="text-center mb-0 mt-auto">
+    <p class="fs-6 mb-1 text-primary">{{ ingredient.name | translate:'es' | async}}</p>
   </div>
 </div>

@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { TooltipDirective } from 'src/app/directives/tooltip.directive';
 import { MinutesPipe } from '../../pipes/minutes.pipe';
+import { TranslatePipe } from "../../pipes/translate.pipe";
 
 @Component({
-  selector: 'app-recipe-card',
-  standalone: true,
-  templateUrl: './recipe-card.component.html',
-  styles: [
-    `
+    selector: 'app-recipe-card',
+    standalone: true,
+    templateUrl: './recipe-card.component.html',
+    styles: [
+        `
       .gluten {
         color: #f5deb3;
       }
@@ -37,8 +38,8 @@ import { MinutesPipe } from '../../pipes/minutes.pipe';
         transform: scale(1.02);
       }
     `,
-  ],
-  imports: [CommonModule, TooltipDirective, MinutesPipe, NgOptimizedImage],
+    ],
+    imports: [CommonModule, TooltipDirective, MinutesPipe, NgOptimizedImage, TranslatePipe]
 })
 export class RecipeCardComponent {
   @Input({ required: true }) recipe!: RecipeInfo;
