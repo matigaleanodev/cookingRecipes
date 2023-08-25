@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { TranslatePipe } from "../../pipes/translate.pipe";
@@ -10,13 +10,16 @@ import { RecipeIngredientComponent } from '../recipe-ingredient/recipe-ingredien
     standalone: true,
     templateUrl: './recipe-detail.component.html',
     styles: [],
-    imports: [CommonModule, TranslatePipe, RecipeIngredientComponent]
+    imports: [CommonModule, TranslatePipe, RecipeIngredientComponent, NgOptimizedImage]
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() id?: string; 
   recipe!: RecipeInfo;
   viewRecipe: boolean = false;
   private service = inject(RecipesService);
+  protected ingredient = 'assets/images/ingredients.png'
+  protected instructions = 'assets/images/instructions.png'
+  protected stepimg = 'assets/images/step.png'
 
   ngOnInit() {
     this.setRecipe();

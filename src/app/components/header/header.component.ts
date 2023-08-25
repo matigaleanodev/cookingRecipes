@@ -11,6 +11,6 @@ import { RouterLink } from '@angular/router';
   ]
 })
 export class HeaderComponent {
-  protected logo = 'assets/images/logo.png'
+  protected logo = 'assets/images/recipe.png'
   protected title = 'Recipe Food Tracker'
 }

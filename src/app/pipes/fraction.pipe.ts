@@ -9,14 +9,19 @@ export class FractionPipe implements PipeTransform {
     if (value === 0) {
       return '0';
     } else if (value < 1) {
-      
       const gcd = this.calculateGCD(value);
       const numerator = Math.floor(value * gcd);
       const denominator = gcd;
       return `${numerator}/${denominator}`;
+    } else if (value > 1 && value < 2) {
+      const integerPart = Math.floor(value);
+      const fractionalPart = value - integerPart;
+      const gcd = this.calculateGCD(fractionalPart);
+      const numerator = Math.floor(fractionalPart * gcd);
+      const denominator = gcd;
+      return `${integerPart} y ${numerator}/${denominator}`;
     } else {
-      
-      return value.toString();
+      return Math.floor(value).toString();
     }
   }
 
