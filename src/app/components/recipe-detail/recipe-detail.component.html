@@ -1,89 +1,110 @@
-<article class="container">
-  <div class="row" *ngIf="viewRecipe">
-    <div class="col-12 mb-3 mb-md-5">
-      <h2 class="text-center text-orange mb-md-5">
-        {{ recipe.title | translate : "es" | async }}
-      </h2>
-      <div class="row mb-3">
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
-          <img
-            [src]="
-              'https://spoonacular.com/recipeImages/' +
-              recipe.id +
-              '-556x370.' +
-              (recipe.imageType ? recipe.imageType : 'jpg')
-            "
-            alt="{{ recipe.title }}"
-            class="img-fluid rounded rounded-3 custom-shadow"
-          />
-        </div>
-        <div
-          class="col-12 col-lg-6 d-flex bg-light bg-gradient bg-opacity-25 p-5 justify-content-center align-items-center rounded rounded-3 custom-shadow"
-        >
-          <p
-            [innerHTML]="recipe.summary | translate : 'es' | async"
-            class="text-primary"
-          ></p>
-        </div>
+<article class="container" *ngIf="viewRecipe">
+  <div class="row mb-2 mb-md-5">
+    <h2 class="text-center text-orange">
+      {{ recipe.title | translate : "es" | async }}
+    </h2>
+  </div>
+  <div
+    class="row mb-3 d-flex justify-content-center gap-2"
+    *ngIf="visibleIcons.length > 0"
+  >
+    <div class="col-auto text-center" *ngFor="let iconName of visibleIcons">
+      <div
+        class="d-flex justify-content-center align-items-center rounded rounded-circle bg-light custom-shadow"
+        style="height: 75px; width: 75px"
+      >
+        <img
+          Tooltip
+          [src]="'assets/images/' + iconName + '.png'"
+          style="height: 50px; width: fit-content"
+          [alt]="iconName"
+        />
       </div>
-
-      <!-- <div class="col-md-4">
-        <h3>Detalles adicionales</h3>
-        <ul>
-          <li>Tiempo de Preparación: {{ recipe.preparationMinutes }} minutos</li>
-          <li>Tiempo de Cocción: {{ recipe.cookingMinutes }} minutos</li>
-        </ul>
-      </div> -->
+      <p class="mt-1 fs-6 fw-bolder">
+        {{ name(iconName) | translate : "es" | async | titlecase }}
+      </p>
     </div>
+  </div>
+  <div class="row mb-3">
+    <div
+      class="col-12 col-lg-6 mb-3 mb-lg-auto order-2 order-md-1 d-flex justify-content-center justify-content-lg-start"
+    >
+      <img
+        [src]="
+          'https://spoonacular.com/recipeImages/' +
+          recipe.id +
+          '-556x370.' +
+          (recipe.imageType ? recipe.imageType : 'jpg')
+        "
+        alt="{{ recipe.title }}"
+        class="img-fluid rounded rounded-3 custom-shadow"
+      />
+    </div>
+    <div
+      style="min-height: 370px"
+      class="col-12 col-lg-6 d-flex bg-light bg-gradient bg-opacity-25 p-3 p-md-5 justify-content-center align-items-center rounded rounded-3 custom-shadow mb-3 mb-md-auto order-1 order-md-2"
+    >
+      <p
+        [innerHTML]="recipe.summary | translate : 'es' | async"
+        class="text-primary"
+      ></p>
+    </div>
+  </div>
+  <div class="row mb-3">
     <h3 class="mb-2 mb-md-4">
       <img
         class="img-fluid pb-2 me-1"
-        [ngSrc]="ingredient"
+        [src]="ingredient"
         alt="logo sombrero de cocina"
         height="32"
         width="32"
       />
       Ingredientes
     </h3>
-    <div
-      class="row d-flex px-md-5 mb-3 justify-content-center justify-content-md-start"
-    >
-      <div
-        class="col-auto"
-        *ngFor="let ingredient of recipe.extendedIngredients"
-      >
-        <app-recipe-ingredient [ingredient]="ingredient" />
-      </div>
+  </div>
+  <div
+    class="row d-flex px-md-5 mb-3 justify-content-center justify-content-md-start"
+  >
+    <div class="col-auto" *ngFor="let ingredient of recipe.extendedIngredients">
+      <app-recipe-ingredient [ingredient]="ingredient" />
     </div>
-
+  </div>
+  <div class="row mb-3">
     <h3>
       <img
-        class="img-fluid pb-2 me-1"
-        [ngSrc]="instructions"
+        class="img-fluid"
+        [src]="instructions"
         alt="logo sombrero de cocina"
         height="32"
         width="32"
       />
       Pasos a Seguir
     </h3>
+  </div>
+  <div
+    class="row bg-light bg-gradient bg-opacity-25 rounded rounded-3 custom-shadow mb-3 p-0 overflow-hidden"
+  >
     <div
-      class="row bg-light bg-gradient bg-opacity-25 rounded rounded-3 custom-shadow mb-3"
+      class="col-12 d-flex p-3 bg-opacity-25"
+      style="min-height: 100px"
+      *ngFor="
+        let step of recipe.analyzedInstructions[0]?.steps;
+        let odd = odd;
+        let even = even
+      "
+      [ngClass]="{ 'bg-light': odd, 'bg-dark': even }"
     >
-      <div
-        class="col-12 d-flex my-3" style="height: 32px;"
-        *ngFor="let step of recipe.analyzedInstructions[0]?.steps"
-      >
-        <img
-          class="img-fluid pb-2 me-1"
-          [ngSrc]="stepimg"
-          alt="logo sombrero de cocina"
-          height="32"
-          width="32"
-        />
-        <p class="list-group-item">
-          {{ step.step | translate : "es" | async }}
-        </p>
-      </div>
+      <img
+        class="img-fluid pb-2 me-1"
+        style="height: 32px"
+        [src]="stepimg"
+        alt="logo sombrero de cocina"
+        height="32"
+        width="32"
+      />
+      <p class="list-group-item">
+        {{ step.step | translate : "es" | async }}
+      </p>
     </div>
   </div>
 </article>

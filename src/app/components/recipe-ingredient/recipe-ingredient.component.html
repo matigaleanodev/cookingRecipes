@@ -9,7 +9,7 @@
     </p>
   </div>
 
-  <div class="image-wrapped d-flex">
+  <div class="image-wrapped d-flex mt-auto">
     <img
       [src]="
         'https://spoonacular.com/cdn/ingredients_100x100/' + ingredient.image
@@ -20,6 +20,6 @@
   </div>
 
   <div class="text-center mb-0 mt-auto">
-    <p class="fs-6 mb-1 text-primary">{{ ingredient.name | translate:'es' | async}}</p>
+    <p class="fs-6 fw-bolder mb-1 text-primary">{{ ingredient.name | translate:'es' | async | titlecase}}</p>
   </div>
 </div>
