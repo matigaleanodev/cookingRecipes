@@ -17,6 +17,13 @@ export const RootRoutes: Routes = [
         (c) => c.HomeComponent
       ),
   },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('src/app/components/search/search.component').then(
+        (c) => c.SearchComponent
+      ),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',
