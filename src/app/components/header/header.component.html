@@ -1,4 +1,4 @@
-<header class="header fixed-top container-fluid p-0">
+<header class="header fixed-top container-fluid p-0 bg-secondary bg-gradient border-bottom">
   <nav class="navbar navbar-expand-md navbar-default px-2 px-md-5 py-2">
     <a class="navbar-brand col" [routerLink]="'/home'"
       ><img
@@ -8,8 +8,8 @@
         height="32"
         width="32"
       />
-        <span class="fs-4 fw-bold text-secondary">{{title}}</span>
-      </a>
+      <span class="fs-4 fw-bold text-primary">{{ title }}</span>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -24,13 +24,68 @@
     <div class="collapse navbar-collapse col-auto" id="navbar">
       <ul class="navbar-nav mr-auto text-center col">
         <li class="nav-item">
-          <a class="nav-link fw-bolder" routerLink="/home" routerLinkActive="active"><i class="fa-solid fa-home"></i> Home </a>
+          <a
+            class="nav-link fw-bolder"
+            routerLink="/home"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-home"></i> Home
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fw-bolder" routerLink="/search"  routerLinkActive="active"><i class="fa-solid fa-magnifying-glass"></i> Buscador</a>
+          <a
+            class="nav-link fw-bolder"
+            routerLink="/search"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-magnifying-glass"></i> Buscador</a
+          >
         </li>
       </ul>
-      
+      <div>
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-end col-auto socialbox gap-2"
+        >
+          <a
+            href="https://linkedin.com/in/matigaleanodev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socialbox-link"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/MatiGaleano"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socialbox-link"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <!-- <a
+            href="https://twitter.com/NoSoy_Mati/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socialbox-link"
+          >
+            <i class="fa-brands fa-twitter"></i>
+          </a> -->
+          <a
+            href="https://www.instagram.com/matigaleanodev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socialbox-link"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/matigaleanodev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socialbox-link"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
