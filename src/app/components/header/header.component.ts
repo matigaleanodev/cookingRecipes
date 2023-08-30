@@ -7,8 +7,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [CommonModule, NgOptimizedImage, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styles: [
-  ]
+  styles: [`
+    .header-bg{
+      background-color: #d17273a9;
+      backdrop-filter: blur(12px);
+
+    }
+  `]
 })
 export class HeaderComponent {
   protected logo = 'assets/images/recipe.png'

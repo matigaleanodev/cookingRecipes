@@ -7,7 +7,7 @@
     (click)="viewRecipeDetail(recipe)"
     />
   <div class="card-body d-flex flex-column px-3 py-2">
-    <h5 class="card-title fs-5 fw-bold text-orange pointer text-center mb-auto" (click)="viewRecipeDetail(recipe)">
+    <h5 class="card-title fs-5 fw-bold text-secondary pointer text-center mb-auto" (click)="viewRecipeDetail(recipe)">
       {{ recipe.title | translate:'es' | async  }}
     </h5>
     <div class="d-flex justify-content-between mb-1" *ngIf="recipe.readyInMinutes >= 1">

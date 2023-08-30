@@ -2,41 +2,38 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'fraction',
-  standalone: true
+  standalone: true,
 })
 export class FractionPipe implements PipeTransform {
   transform(value: number): string {
-    if (value === 0) {
-      return '0';
+    if (value === 0 || Math.round(value) === value) {
+      return value.toString();
     } else if (value < 1) {
-      // Verificar si el valor es una de las fracciones deseadas
-      const fractions = [1/2, 1/3, 1/4, 1/5];
-      const matchingFraction = fractions.find(fraction => Math.abs(value - fraction) < 0.01);
+      const fractions = [1 / 2, 1 / 3, 1 / 4, 1 / 5];
+      const matchingFraction = fractions.find(
+        (fraction) => Math.abs(value - fraction) < 0.01
+      );
 
       if (matchingFraction) {
-        // Si coincide con una fracción deseada, mostrarla como fracción
         return `${matchingFraction}`;
       } else {
-        // De lo contrario, mostrar el valor original
-        return value.toString();
+        return value.toFixed(1);
       }
     } else if (value >= 1 && value < 2) {
-      // Verificar si el valor es una de las fracciones deseadas
-      const fractions = [1, 1/2, 1/3, 1/4, 1/5];
+      const fractions = [1, 1 / 2, 1 / 3, 1 / 4, 1 / 5];
       const integerPart = Math.floor(value);
       const fractionalPart = value - integerPart;
-      const matchingFraction = fractions.find(fraction => Math.abs(fractionalPart - fraction) < 0.01);
+      const matchingFraction = fractions.find(
+        (fraction) => Math.abs(fractionalPart - fraction) < 0.01
+      );
 
       if (matchingFraction) {
-        // Si coincide con una fracción deseada, mostrarla como fracción
         return `${integerPart} y ${matchingFraction}`;
       } else {
-        // De lo contrario, mostrar el valor original
-        return value.toString();
+        return value.toFixed(1);
       }
     } else {
-      // Si es mayor o igual a 2, mostrar el valor original
-      return value.toString();
+      return value.toFixed(1);
     }
   }
 
