@@ -1,9 +1,16 @@
 export interface RecipeList {
-  recipes: RecipeInfo[]
+  recipes: RecipeInfo[];
+}
+
+export interface QueryResult {
+  number: number;
+  offset: number;
+  results: RecipeInfo[];
+  totalResults: number;
 }
 
 export interface RecipeInfo {
-  [key: string]:any;
+  [key: string]: any;
   vegetarian: boolean;
   vegan: boolean;
   glutenFree: boolean;

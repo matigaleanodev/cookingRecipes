@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { RecipeInfo, RecipeList } from '../models/recipe.model';
+import { QueryResult, RecipeInfo, RecipeList } from '../models/recipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,10 @@ export class RecipesService {
     const url = `${this.apiUrl}/recipes/complexSearch`;
     const params = {
       query: keyword,
+      number: 24,
       apiKey: this.apiKey,
     };
-    return this.http.get(url, { params });
+    return this.http.get<QueryResult>(url, { params });
   }
 
   especificRecipes(id: number) {
@@ -28,7 +29,7 @@ export class RecipesService {
     const params = {
       apiKey: this.apiKey,
     };
-    return this.http.get(url, { params });
+    return this.http.get<RecipeInfo>(url, { params });
   }
 
   randomRecipes(limit: number) {

@@ -4,6 +4,15 @@
       {{ recipe.title | translate : "es" | async }}
     </h2>
   </div>
+  
+  <div class="row">
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.readyInMinutes >= 1">
+      <span >Listo en: </span> <span>{{ recipe.readyInMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
+    </div>
+    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.servings">
+      <span >Porciones: </span> <span>{{ recipe.servings }}</span>
+    </div>
+  </div>
   <div
     class="row mb-3 d-flex justify-content-center gap-2"
     *ngIf="visibleIcons.length > 0"

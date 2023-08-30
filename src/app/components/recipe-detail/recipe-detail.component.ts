@@ -5,6 +5,7 @@ import { RecipesService } from 'src/app/services/recipes.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { RecipeIngredientComponent } from '../recipe-ingredient/recipe-ingredient.component';
 import { TooltipDirective } from 'src/app/directives/tooltip.directive';
+import { MinutesPipe } from "../../pipes/minutes.pipe";
 
 interface IconInfo {
   shouldShow: boolean;
@@ -12,11 +13,11 @@ interface IconInfo {
 }
 
 @Component({
-  selector: 'app-recipe-detail',
-  standalone: true,
-  templateUrl: './recipe-detail.component.html',
-  styles: [],
-  imports: [CommonModule, TranslatePipe, RecipeIngredientComponent],
+    selector: 'app-recipe-detail',
+    standalone: true,
+    templateUrl: './recipe-detail.component.html',
+    styles: [],
+    imports: [CommonModule, TranslatePipe, RecipeIngredientComponent, MinutesPipe]
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() id?: string;
@@ -30,12 +31,19 @@ export class RecipeDetailComponent implements OnInit {
   visibleIcons: string[] = [];
 
   ngOnInit() {
-    this.setRecipe();
+    this.getRecipe();
   }
 
-  setRecipe() {
-    const data = this.service.getDataStorage();
-    const recipe = data.find((i) => i.id === Number(this.id));
+  getRecipe(){
+    const id = Number(this.id)
+    this.service.especificRecipes(id).subscribe({
+      next: (recipe: RecipeInfo) => {
+        this.setRecipe(recipe)
+      },
+    });
+  }
+
+  setRecipe(recipe: RecipeInfo) {
     if (recipe) {
       this.recipe = recipe;
       this.viewRecipe = true;
