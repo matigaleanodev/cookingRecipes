@@ -1,29 +1,30 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { RecipeIngredientComponent } from '../recipe-ingredient/recipe-ingredient.component';
-import { TooltipDirective } from 'src/app/directives/tooltip.directive';
-import { MinutesPipe } from "../../pipes/minutes.pipe";
-
-interface IconInfo {
-  shouldShow: boolean;
-  iconPath: string;
-}
+import { MinutesPipe } from '../../pipes/minutes.pipe';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-recipe-detail',
-    standalone: true,
-    templateUrl: './recipe-detail.component.html',
-    styles: [],
-    imports: [CommonModule, TranslatePipe, RecipeIngredientComponent, MinutesPipe]
+  selector: 'app-recipe-detail',
+  standalone: true,
+  templateUrl: './recipe-detail.component.html',
+  styles: [],
+  imports: [
+    CommonModule,
+    TranslatePipe,
+    RecipeIngredientComponent,
+    MinutesPipe,
+  ],
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() id?: string;
   recipe!: RecipeInfo;
   viewRecipe: boolean = false;
   private service = inject(RecipesService);
+  private router = inject(Router);
   protected ingredient = 'assets/images/ingredients.png';
   protected instructions = 'assets/images/instructions.png';
   protected stepimg = 'assets/images/step.png';
@@ -34,11 +35,11 @@ export class RecipeDetailComponent implements OnInit {
     this.getRecipe();
   }
 
-  getRecipe(){
-    const id = Number(this.id)
+  getRecipe() {
+    const id = Number(this.id);
     this.service.especificRecipes(id).subscribe({
       next: (recipe: RecipeInfo) => {
-        this.setRecipe(recipe)
+        this.setRecipe(recipe);
       },
     });
   }
@@ -78,4 +79,9 @@ export class RecipeDetailComponent implements OnInit {
         return name;
     }
   }
+
+  viewSimilarRecipe(recipe: RecipeInfo) {
+    this.router.navigate([`/similar/${recipe.id}`]);
+  }
+
 }

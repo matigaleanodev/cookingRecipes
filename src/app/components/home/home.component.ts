@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
     if(this.query && this.query !== this.lastSearch){
       this.service.searchRecipes(this.query).subscribe({
         next: (value) => {
-          console.log(value.results)
           this.recipeList = value.results;
           this.service.dataList = value.results;
           this.service.setDataStorage(this.recipeList);

@@ -1,0 +1,24 @@
+<div class="container">
+  <section class="row hero my-2 justify-content-center">
+    <div class="col-12 col-md-5 order-2 order-md-1 d-flex flex-column align-items-end my-auto">
+      
+    </div>
+    <div class="col-12 col-md-auto justify-content-center order-1 order-md-2">
+    </div>
+  </section>
+  <section *ngIf="viewList" class="row">
+    <div
+      *ngFor="let recipe of recipeList; let i = index"
+      class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
+      [@fadeInOnEnter]="{
+        value: '',
+        params: { duration: 1500, delay: i * 300 }
+      }"
+    >
+      <app-recipe-card [recipe]="recipe" [index]="i + 1" />
+    </div>
+  </section>
+</div>
+
+
+

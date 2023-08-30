@@ -4,11 +4,11 @@ import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.
 export const RootRoutes: Routes = [
 	{
     path: 'recipe/:id',
-		component: RecipeDetailComponent
-    // loadComponent: () =>
-    //   import('./components/recipe-detail/recipe-detail.component').then(
-    //     (c) => c.RecipeDetailComponent
-		// 		),
+		//component: RecipeDetailComponent
+    loadComponent: () =>
+      import('./components/recipe-detail/recipe-detail.component').then(
+        (c) => c.RecipeDetailComponent
+				),
   },
   {
     path: 'home',
@@ -18,10 +18,10 @@ export const RootRoutes: Routes = [
       ),
   },
   {
-    path: 'search',
+    path: 'similar/:id',
     loadComponent: () =>
-      import('src/app/components/search/search.component').then(
-        (c) => c.SearchComponent
+      import('src/app/components/recipe-similar/recipe-similar.component').then(
+        (c) => c.RecipeSimilarComponent
       ),
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

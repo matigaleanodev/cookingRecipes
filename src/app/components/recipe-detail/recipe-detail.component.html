@@ -4,13 +4,25 @@
       {{ recipe.title | translate : "es" | async }}
     </h2>
   </div>
-  
+
   <div class="row">
-    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.readyInMinutes >= 1">
-      <span >Listo en: </span> <span>{{ recipe.readyInMinutes | minutes }} <i class="fa-regular fa-clock"></i></span>
-    </div>
-    <div class="d-flex justify-content-between mb-1" *ngIf="recipe.servings">
-      <span >Porciones: </span> <span>{{ recipe.servings }}</span>
+    <div class="col-md-3">
+      <div
+        class="d-flex justify-content-between mb-1"
+        *ngIf="recipe.readyInMinutes >= 1"
+      >
+        <span>Listo en: </span>
+        <span
+          >{{ recipe.readyInMinutes | minutes }}
+          <i class="fa-regular fa-clock"></i
+        ></span>
+      </div>
+      <div class="d-flex justify-content-between mb-1" *ngIf="recipe.servings">
+        <span>Porciones: </span> <span>{{ recipe.servings }}</span>
+      </div>
+      <div>
+        <button class="btn btn-secondary"(click)="viewSimilarRecipe(recipe)" >Recetas Similares</button>
+      </div>
     </div>
   </div>
   <div

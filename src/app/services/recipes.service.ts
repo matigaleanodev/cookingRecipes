@@ -32,6 +32,14 @@ export class RecipesService {
     return this.http.get<RecipeInfo>(url, { params });
   }
 
+  similarRecipes(id: number) {
+    const url = `${this.apiUrl}/recipes/${id}/similar`;
+    const params = {
+      apiKey: this.apiKey,
+    };
+    return this.http.get<RecipeInfo[]>(url, { params });
+  }
+
   randomRecipes(limit: number) {
     const url = `${this.apiUrl}/recipes/random`;
     const params = {
