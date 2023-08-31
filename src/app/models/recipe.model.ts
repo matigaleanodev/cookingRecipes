@@ -11,6 +11,7 @@ export interface QueryResult {
 
 export interface RecipeInfo {
   [key: string]: any;
+  complete: boolean;
   vegetarian: boolean;
   vegan: boolean;
   glutenFree: boolean;

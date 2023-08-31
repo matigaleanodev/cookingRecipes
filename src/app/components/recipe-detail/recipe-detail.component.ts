@@ -37,11 +37,18 @@ export class RecipeDetailComponent implements OnInit {
 
   getRecipe() {
     const id = Number(this.id);
-    this.service.especificRecipes(id).subscribe({
-      next: (recipe: RecipeInfo) => {
-        this.setRecipe(recipe);
-      },
-    });
+    const memoRecipe = this.service.dataList.find((i) => i.id === id);
+    if (memoRecipe && memoRecipe.complete) {
+      this.setRecipe(memoRecipe);
+    } else {
+      this.service.especificRecipes(id).subscribe({
+        next: (recipe: RecipeInfo) => {
+          recipe.complete = true;
+          this.storeUpdate(recipe);
+          this.setRecipe(recipe);
+        },
+      });
+    }
   }
 
   setRecipe(recipe: RecipeInfo) {
@@ -84,4 +91,14 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate([`/similar/${recipe.id}`]);
   }
 
+  storeUpdate(recipe: RecipeInfo) {
+    const dataList = this.service.dataList;
+    const index = dataList.findIndex((item) => item.id === recipe.id);
+
+    if (index !== -1) {
+      dataList[index] = recipe;
+    } else {
+      dataList.push(recipe);
+    }
+  }
 }

@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.service.randomRecipes(24).subscribe({
         next: (value) => {
+          value.recipes.forEach(rcp => rcp.complete = true)
           this.recipeList = value.recipes;
           this.service.dataList = value.recipes;
           this.service.setDataStorage(this.recipeList);
