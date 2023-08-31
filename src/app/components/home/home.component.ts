@@ -15,10 +15,13 @@ import { FormsModule } from '@angular/forms';
   animations: [ fadeInOnEnterAnimation() ],
 })
 export class HomeComponent implements OnInit {
+
   private service = inject(RecipesService);
+
   protected recipeList: RecipeInfo[] = [];
   protected query: string = ''
   private lastSearch: string = '';
+  
   viewList: boolean = false;
 
   ngOnInit(): void {
@@ -48,6 +51,7 @@ export class HomeComponent implements OnInit {
     if(this.query && this.query !== this.lastSearch){
       this.service.searchRecipes(this.query).subscribe({
         next: (value) => {
+          this.lastSearch = this.query;
           this.recipeList = value.results;
           this.service.dataList = value.results;
           this.service.setDataStorage(this.recipeList);

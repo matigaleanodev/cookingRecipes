@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { RecipeInfo } from 'src/app/models/recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
@@ -20,22 +20,29 @@ import { Router } from '@angular/router';
   ],
 })
 export class RecipeDetailComponent implements OnInit {
+  
   @Input() id?: string;
+
   recipe!: RecipeInfo;
   viewRecipe: boolean = false;
+  visibleIcons: string[] = [];
+
   private service = inject(RecipesService);
   private router = inject(Router);
+  private location = inject(Location);
+
   protected ingredient = 'assets/images/ingredients.png';
   protected instructions = 'assets/images/instructions.png';
   protected stepimg = 'assets/images/step.png';
 
-  visibleIcons: string[] = [];
 
   ngOnInit() {
     this.getRecipe();
   }
 
   getRecipe() {
+    const data = this.service.getDataStorage();
+    this.service.dataList = data;
     const id = Number(this.id);
     const memoRecipe = this.service.dataList.find((i) => i.id === id);
     if (memoRecipe && memoRecipe.complete) {
@@ -100,5 +107,10 @@ export class RecipeDetailComponent implements OnInit {
     } else {
       dataList.push(recipe);
     }
+    this.service.setDataStorage(dataList);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
