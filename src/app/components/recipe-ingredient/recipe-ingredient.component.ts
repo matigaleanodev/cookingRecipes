@@ -12,6 +12,4 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 })
 export class RecipeIngredientComponent {
   @Input({ required: true }) ingredient!: Ingredient;
-
-  constructor() {}
 }

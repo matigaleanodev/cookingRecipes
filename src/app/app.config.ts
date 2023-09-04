@@ -14,12 +14,15 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
-import localeEsAr from '@angular/common/locales/es-AR';
+import localeEs from '@angular/common/locales/es';
 
-registerLocaleData(localeEsAr, 'es-Ar');
+registerLocaleData(localeEs);
+
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: LOCALE_ID, useValue: 'es' },
     provideAnimations(),
     provideRouter(
       RootRoutes,
@@ -31,6 +34,5 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding()
     ),
     importProvidersFrom([HttpClientModule]),
-    { provide: LOCALE_ID, useValue: 'es-Ar' },
   ],
 };
