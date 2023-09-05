@@ -1,6 +1,6 @@
 # Recipe Food Tracker
 
-![Recipe Food Tracker](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/blob/main/src/assets/images/logo.png) 
+![Recipe Food Tracker](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/main/src/assets/images/logo.png) 
 
 ## Descripción
 
@@ -8,9 +8,9 @@ Recipe Food Tracker es una aplicación diseñada para ayudarte a encontrar recet
 
 ## Capturas de Pantalla
 
-![Captura de Pantalla 1](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/blob/main/src/assets/screenshots/screen-1.png)
-![Captura de Pantalla 2](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/blob/main/src/assets/screenshots/screen-2.png)
-![Captura de Pantalla 3](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/blob/main/src/assets/screenshots/screen-3.png)
+![Captura de Pantalla 1](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/main/src/assets/screenshots/screen-1.png)
+![Captura de Pantalla 2](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/main/src/assets/screenshots/screen-2.png)
+![Captura de Pantalla 3](https://raw.githubusercontent.com/MatiGaleano/cookingRecipes/main/src/assets/screenshots/screen-3.png)
 
 ## Tecnologías Utilizadas
 
