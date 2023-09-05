@@ -34,6 +34,10 @@ export class RecipeDetailComponent implements OnInit {
   protected ingredient = 'assets/images/ingredients.png';
   protected instructions = 'assets/images/instructions.png';
   protected stepimg = 'assets/images/step.png';
+  protected preparetime = 'assets/images/prepare-time.png';
+  protected cookingtime = 'assets/images/cook-time.png';
+  protected prepare = 'assets/images/prepare.png';
+  protected portion = 'assets/images/portion.png';
 
 
   ngOnInit() {
