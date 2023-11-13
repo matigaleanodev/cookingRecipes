@@ -1,4 +1,5 @@
-<article class="container" *ngIf="viewRecipe">
+@if (viewRecipe) {
+<article class="container">
   <div class="row mt-2 mb-2 mb-md-3">
     <h2 class="title d-flex">
       <div>
@@ -22,7 +23,8 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="d-flex justify-content-between mb-1" *ngIf="recipe.servings">
+      @if (recipe.servings) {
+<div class="d-flex justify-content-between mb-1">
         <span class="d-flex gap-2 align-items-center">
           <div
             class="rounded-circle bg-light d-flex"
@@ -39,9 +41,11 @@
           Cantidad: <b>{{ recipe.servings }} porciones</b></span
         >
       </div>
-      <div
+}
+      @if (recipe.readyInMinutes >= 1) {
+<div
         class="d-flex justify-content-between mb-1"
-        *ngIf="recipe.readyInMinutes >= 1"
+       
       >
         <span class="d-flex gap-2 align-items-center">
           <div
@@ -59,11 +63,13 @@
           Listo en <b>{{ recipe.readyInMinutes | minutes }}</b> minutos</span
         >
       </div>
+}
     </div>
     <div class="col-md-4">
-      <div
+      @if (recipe.preparationMinutes >= 1) {
+<div
         class="d-flex justify-content-between mb-1"
-        *ngIf="recipe.preparationMinutes >= 1"
+       
       >
         <span class="d-flex gap-2 align-items-center">
           <div
@@ -82,9 +88,11 @@
           <b>{{ recipe.cookingMinutes | minutes }}</b> minutos</span
         >
       </div>
-      <div
+}
+      @if (recipe.cookingMinutes >= 1) {
+<div
         class="d-flex justify-content-between mb-1"
-        *ngIf="recipe.cookingMinutes >= 1"
+       
       >
         <span class="d-flex gap-2 align-items-center">
           <div
@@ -103,13 +111,16 @@
           <b>{{ recipe.cookingMinutes | minutes }}</b> minutos</span
         >
       </div>
+}
     </div>
   </div>
-  <div
+  @if (visibleIcons.length > 0) {
+<div
     class="row mb-3 d-flex justify-content-center gap-2"
-    *ngIf="visibleIcons.length > 0"
+   
   >
-    <div class="col-auto text-center" *ngFor="let iconName of visibleIcons">
+    @for (iconName of visibleIcons; track iconName) {
+  <div class="col-auto text-center">
       <div
         class="d-flex justify-content-center align-items-center rounded rounded-circle bg-light custom-shadow"
         style="height: 75px; width: 75px"
@@ -125,7 +136,9 @@
         {{ name(iconName) | translate : "es" | async | titlecase }}
       </p>
     </div>
+}
   </div>
+}
   <div class="row mb-3">
     <div
       class="col-12 col-lg-6 mb-3 mb-lg-auto order-2 order-md-1 d-flex justify-content-center justify-content-lg-start"
@@ -166,9 +179,11 @@
   <div
     class="row d-flex px-md-5 mb-3 justify-content-center justify-content-md-start"
   >
-    <div class="col-auto" *ngFor="let ingredient of recipe.extendedIngredients">
+    @for (ingredient of recipe.extendedIngredients; track ingredient) {
+  <div class="col-auto">
       <app-recipe-ingredient [ingredient]="ingredient" />
     </div>
+}
   </div>
   <div class="row mb-3">
     <h3 class="mb-2 mb-md-1">
@@ -185,14 +200,13 @@
   <div
     class="row bg-light bg-gradient bg-opacity-25 rounded rounded-3 custom-shadow mb-3 p-0 overflow-hidden"
   >
-    <div
+    @for (
+        step of recipe.analyzedInstructions[0]?.steps; track 
+        step; let odd = $odd; let even = $even) {
+  <div
       class="col-12 d-flex p-3 bg-opacity-25"
       style="min-height: 100px"
-      *ngFor="
-        let step of recipe.analyzedInstructions[0]?.steps;
-        let odd = odd;
-        let even = even
-      "
+     
       [ngClass]="{ 'bg-light': odd, 'bg-dark': even }"
     >
       <img
@@ -207,5 +221,7 @@
         {{ step.step | translate : "es" | async }}
       </p>
     </div>
+}
   </div>
 </article>
+}

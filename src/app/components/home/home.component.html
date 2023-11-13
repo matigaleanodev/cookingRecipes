@@ -17,9 +17,11 @@
       </picture>
     </div>
   </section>
-  <section *ngIf="viewList" class="row">
-    <div
-      *ngFor="let recipe of recipeList; let i = index"
+  @if (viewList) {
+<section class="row">
+    @for (recipe of recipeList; track recipe; let i = $index) {
+  <div
+     
       class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
       [@fadeInOnEnter]="{
         value: '',
@@ -28,5 +30,7 @@
     >
       <app-recipe-card [recipe]="recipe" [index]="i + 1" />
     </div>
+}
   </section>
+}
 </div>
