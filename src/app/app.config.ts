@@ -15,6 +15,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { provideHttpClient } from '@angular/common/http';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 
 registerLocaleData(localeEs);
 
@@ -32,6 +33,6 @@ export const appConfig: ApplicationConfig = {
       }),
       withComponentInputBinding()
     ),
-    importProvidersFrom([]),
+    importProvidersFrom([]), provideIonicAngular({}),
   ],
 };
