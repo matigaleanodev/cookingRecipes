@@ -3,7 +3,6 @@ import {
   LOCALE_ID,
   importProvidersFrom,
 } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { RootRoutes } from './app.routes';
 import {
   PreloadAllModules,
@@ -15,15 +14,15 @@ import {
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { provideHttpClient } from '@angular/common/http';
 
 registerLocaleData(localeEs);
-
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: LOCALE_ID, useValue: 'es' },
     provideAnimations(),
+    provideHttpClient(),
     provideRouter(
       RootRoutes,
       withPreloading(PreloadAllModules),
@@ -33,6 +32,6 @@ export const appConfig: ApplicationConfig = {
       }),
       withComponentInputBinding()
     ),
-    importProvidersFrom([HttpClientModule]),
+    importProvidersFrom([]),
   ],
 };
