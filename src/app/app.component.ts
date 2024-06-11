@@ -8,10 +8,9 @@ import { FooterComponent } from './components/footer/footer.component';
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  styles: [],
+  styles: [``],
   imports: [CommonModule, HeaderComponent, RouterOutlet, FooterComponent],
 })
 export class AppComponent {
   title = 'Recipe Food Tracker';
-  
 }

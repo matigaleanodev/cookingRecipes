@@ -10,6 +10,12 @@ html {
 
 body {
   font-family: "Sofia Sans Semi Condensed", "Nunito Sans", sans-serif;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollable-container {
   background: radial-gradient(
     circle at top right,
     #ff8d8e,
@@ -18,12 +24,6 @@ body {
     #ffffff
   );
   background-size: 100% 1000%;
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.scrollable-container {
   max-height: 100%;
   width: 100%;
   overflow-y: auto;
@@ -45,19 +45,18 @@ body {
   cursor: pointer;
 }
 
-
 .title {
-  width:100%;
+  width: 100%;
   line-height: 2.75rem;
-  font-size:2.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   height: 42;
   color: $primary;
   text-shadow: -1px 1px 2px rgba(255, 0, 0, 0.5);
-  border-bottom:solid 2px #681515;
+  border-bottom: solid 2px #681515;
 }
 
-.text-grey{
+.text-grey {
   color: #917d80fb;
 }
 
