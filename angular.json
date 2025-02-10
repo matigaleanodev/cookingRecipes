@@ -170,30 +170,6 @@
             ],
             "scripts": []
           }
-        },
-        "ionic-cordova-serve": {
-          "builder": "@ionic/angular-toolkit:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "cookingRecipes:ionic-cordova-build",
-            "devServerTarget": "cookingRecipes:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "cookingRecipes:ionic-cordova-build:production",
-              "devServerTarget": "cookingRecipes:serve:production"
-            }
-          }
-        },
-        "ionic-cordova-build": {
-          "builder": "@ionic/angular-toolkit:cordova-build",
-          "options": {
-            "browserTarget": "cookingRecipes:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "cookingRecipes:build:production"
-            }
-          }
         }
       }
     }
