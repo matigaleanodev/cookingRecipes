@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/cooking-recipes",
+    "public": "dist/cooking-recipes/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
