@@ -8,16 +8,15 @@ import { MinutesPipe } from '../../pipes/minutes.pipe';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe-detail',
-  standalone: true,
-  templateUrl: './recipe-detail.component.html',
-  styles: [],
-  imports: [
-    CommonModule,
-    TranslatePipe,
-    RecipeIngredientComponent,
-    MinutesPipe,
-  ],
+    selector: 'app-recipe-detail',
+    templateUrl: './recipe-detail.component.html',
+    styles: [],
+    imports: [
+        CommonModule,
+        TranslatePipe,
+        RecipeIngredientComponent,
+        MinutesPipe,
+    ]
 })
 export class RecipeDetailComponent implements OnInit {
   

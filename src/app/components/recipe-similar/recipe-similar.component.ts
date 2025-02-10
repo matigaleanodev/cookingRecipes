@@ -7,12 +7,11 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
-  selector: 'app-recipe-similar',
-  standalone: true,
-  templateUrl: './recipe-similar.component.html',
-  styles: [],
-  animations: [fadeInOnEnterAnimation()],
-  imports: [CommonModule, RecipeCardComponent, TranslatePipe],
+    selector: 'app-recipe-similar',
+    templateUrl: './recipe-similar.component.html',
+    styles: [],
+    animations: [fadeInOnEnterAnimation()],
+    imports: [CommonModule, RecipeCardComponent, TranslatePipe]
 })
 export class RecipeSimilarComponent implements OnInit {
 

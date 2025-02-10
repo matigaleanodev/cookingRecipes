@@ -7,12 +7,11 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RecipeCardComponent, FormsModule],
-  templateUrl: './home.component.html',
-  styles: [],
-  animations: [ fadeInOnEnterAnimation() ],
+    selector: 'app-home',
+    imports: [CommonModule, RecipeCardComponent, FormsModule],
+    templateUrl: './home.component.html',
+    styles: [],
+    animations: [fadeInOnEnterAnimation()]
 })
 export class HomeComponent implements OnInit {
 

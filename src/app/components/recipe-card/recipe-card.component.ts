@@ -8,7 +8,6 @@ import { TranslatePipe } from "../../pipes/translate.pipe";
 
 @Component({
     selector: 'app-recipe-card',
-    standalone: true,
     templateUrl: './recipe-card.component.html',
     styles: [
         `
